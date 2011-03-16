@@ -13,7 +13,7 @@ DATA		:=	data
 LIBS		:=	 $(PSL1GHT)/modules/spu_soundmodule.bin.a \
 				-lspu_sound -lmod -laudio -lnet -lsysfs -lpngdec -lfont -lfreetype -lz -ltiny3d -lgcm_sys -lreality -lsysutil -lio -lsysmodule -lm
 
-ICON0       = $(SOURCE)/../ICON0.PNG
+ICON0       :=  ICON0.png
 TITLE		:=	Hermes Manager - v1.5
 APPID		:=	HMANAGER4
 CONTENTID	:=	UP0001-$(APPID)_00-0000000000000000
