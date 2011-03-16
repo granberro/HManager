@@ -1,0 +1,197 @@
+HManager
+========
+
+Basado en PSLIGHT, Tiny3D, PS3Soundlib y OpenPS3FTP, es el primer manager de codigo abierto y hecho sobre herramientas Homebrew.
+
+Esta pensado para la base psgroove-hermesv4 y en concreto para CFW 3.41 (es compatible con dongle antiguo, pero en ese caso
+no estarán activas algunas caracteristicas). Este programa solo debe ser utilizado para el legitimo uso de backup y el autor
+declina cualquier responsabilidad sobre el uso inadecuado que puedan hacer terceros del programa y solo reconoce los usos que
+permite la Legislacion Española en el ambito privado.
+
+Caracteristicas
+===============
+
+- Igual que Open Manager, permite la carga de juegos desde HDD interno y externo, desde Bluray, el copiado, test y borrado de juegos.
+
+- Incluye el payload psgroove-hermesv4D, con el self firmado
+
+- Se presenta con una interfaz grafica donde se representan  4 x 3 iconos por pantalla.
+
+- Permite ajustar la pantalla, cambiar el directorio de los juegos y cambiar color de fondo.
+
+- Se minimiza el uso de botones y la posibilidad de cometer un error por pulsar el incorrecto (especialmente pensado para niños)
+
+- Se incluye soporte FTP (OpenPS3FTP), la posibilidad de bloquear las syscalls (mediante key interna: se recomienda compilar el programa
+cambiando "hmanager_key" por otra distinta) y la posibilidad de lanzar PS3LoadX de forma directa.
+
+- Posibilidad de reemplazar EBOOT.BIN de los nuevos juegos por otro externo
+
+- La configuración de los juegos se guarda en un directorio aparte
+
+Cambios en version 1.1: 
+
+- Posibilidad de añadir un music.mod externo ("/dev_hdd0/game/HMANAGER4/music.mod")
+
+- Añadida la ruta /dev_hdd0/GAMES donde buscar juegos
+
+- Añadido favoritos: posibilidad de añadir 12 juegos y ordenarlos al gusto en la pantalla de inicio
+
+- Actualizado el ftp a la ultima version
+
+- Arreglos varios, etc (pequeños bugs, añadido letreros para los menus ocultos, etc)
+
+Cambios en version 1.2:
+
+- Añadido BDEMU para lanzar juegos desde /dev_usb00x/PS3_GAME con pantalla negra como Modern Warfare. Permite lanzar juego desde /app_home/
+  sin disco. (necesita la opcion "BD Emu (for USB)" en "On")
+
+Cambios en version 1.3:
+
+- Añadido auto patch PARAM.SFO (renombra el original como _PARAM.SFO)
+
+Cambios en version 1.4:
+
+- Añadido soporte para correr juegos con bigfile desde dispositivo USB externo (cacheando el bigfile desde HDD interno).
+Mira los detalles en la seccion "Sobre los Juegos Cacheados" 
+
+- Añadida funcion  "Fix File Permissions"
+
+Changes in 1.5 version:
+
+- Added support to run games with VARIOUS bigfiles from external USB devices (caching the big file from the internal HDD). See details in the section
+"About Cached Games"
+
+- Added support to map dev_hdd0/game to /dev_usb00x/GAMEI (remmeber you it is not supported in all games)
+
+- Minor changes when list games, etc
+
+Controles
+=========
+
+En pantalla de juegos:
+
+    LEFT/RIGHT/UP/DOWN -> Mover para seleccionar juego. Al salir de los limites cambia de pantalla
+
+    CROSS    -> Cargar opciones de juego y salir al XMB
+
+    TRIANGLE -> Salir al XMB
+
+    SELECT   -> Ir a opciones de configuracion de juego
+
+    START    -> Ir a opciones globales del HMANAGER
+
+Favoritos:
+
+    L2 + TRIANGLE -> Mover Favorito
+    
+    CROSS         -> Intercambio de favoritos / Reemplazo (Moviendo favoritos)
+
+    TRIANGLE      -> Cancelar (Moviendo favoritos)
+
+En Opciones de Configuracion y Globales:
+
+    UP/DOWN    -> Moverse entre selecciones
+
+    LEFT/RIGHT -> Seleccionar (en Config. Game)
+
+    CROSS      -> Seleccionar
+
+    CIRCLE     -> Volver
+
+En cualquier momento:
+
+    L2 + R2 + START -> Ajustar pantalla
+
+Pantalla "Options"
+-----------------
+
+Config. Game -> Ir a pantalla Config. Game
+
+Copy Game    -> Copiar juegos desde BR/HDD
+
+Delete Game  -> Borrar juegos desde HDD
+
+Test Game    -> Hace un test informando si el juego tiene Big files o Split files
+
+Copy EBOOT.BIN from USB -> Copia un EBOOT.BIN externo desde /dev_usb/ps3game al directorio /dev_hdd0/game/HMANAGER4/self. El nombre esperado es
+                          "ID".BIN (por ejemplo, en GT5 el nombre seria BCES-00569.BIN). Esta caracteristica requiere payload v4D y activar
+                          "Extern EBOOT.BIN". De esta forma, es posible lanzar el bluray original en 3.41 con self modificado
+
+Return       -> Volver
+
+Pantalla Config. Game
+---------------------
+
+Fix Permissions  -> Cambia entre "Default" (original de la consola, que necesitan ciertos juegos), "PS Jailbreak" y "v4 Perms (F1)", que es el modo
+                   por defecto del payload v4
+
+Select XMB       -> Cambia entre "Debug" (XMB con jailbreak) y "Retail" (requiere disco para lanzar juego, pero permite otras cosas)
+
+Online Updates   -> Por defecto es "On" (no hace nada).. Cambiando a "Off" en payload v4D se modifica al vuelo la version de la aplicacion, evitando
+                   las actualizaciones.
+
+Extern EBOOT.BIN -> Selecciona entre "On" (requiere tener un EBOOT.BIN previamente copiado con su ID) y "Off"
+
+BD Emu (for USB) -> Selecciona entre "On" para habilitar la emulacion BD desde dispositivo USB (copia la carpeta PS3_GAME a /dev_usb00x/PS3_GAME) y "off"
+
+Save Config      -> Guarda la configuracion en /dev_hdd0/game/HMANAGER4/config
+
+Return           -> Volver
+
+Pantalla Global Options
+-----------------------
+
+Video Adjust            -> Ajustar la pantalla
+
+Change Game Directory   -> Para cambiar el directorio de los juegos (autodetecta entre /dev_hdd0/GAMEZ y /dev_hdd0/game/xxxx/GAMEZ)
+
+Change Background Color -> Cambia el color del fondo por otro a tu gusto
+
+Load PS3LoadX           -> Opcion para cargar la utilidad de desarrollo PS3LoadX. Si los permisos se fijaron en "default" te puede resultar util
+                          asi como es conveniente lanzar primero HMANAGER para asegurar la version de payload mas reciente
+
+Initialize FTP Server   -> Una vez iniciado, muestra IP y Puerto. Desde un cliente FTP, acceder como anonymous
+
+Tools                   -> Ir al menu tools
+
+Return                  -> Volver
+
+Tools
+-----
+
+Delete Cache Tool       -> Entrar al menu que permite borrar bigfiles cacheados
+
+Press To Enable Syscall Security  -> En enable no permite que otros programas utilicen las syscalls 6,7,8 y 36 utilizadas por el payload
+Press To Disable Syscall Security    Recuerda modificar "hmanager_key" y compilar el programa si quieres una seguridad maxima
+
+
+Sobre los Juegos Cacheados
+--------------------------
+
+Desde disco duro externo (FAT32) es posible lanzar juegos con bigfiles partidos a la manera de Open Manager (extension .6660xx)
+
+Estos juegos requieren estar en la carpeta "GAMEZ" anticipando al nombre de la carpeta del juego el caracter "_", que se usa para marcar en 
+Open Manager "como juego no ejecutable" ("Marked as non executable"). Puedes añadir esta marca usando la funcion "Test Game" sobre un juego que 
+contenga "Split files". Un ejemplo: /dev_usb000/GAMEZ/_BCES-00000
+
+Al pulsar EQUIS para ejecutarlo, saldrá el mensaje "Marked as non executable. Trying to install in HDD0 cache" si no dispone de una entrada en cache
+previa, pasando a mostrar "Want to copy from USB00X to HDD0 CACHE?".
+
+Si contestas SI se procede a hacer un test de espacio libre (si no hay suficiente espacio mostrara la "Delete Cache Tool" para que elijas que entradas
+borrar. mostrando el espacio necesario y el disponible en el disco duro. Recuerda dejar espacio suficiente para el sistema PS3), pasando posteriormente
+a instalar el bigfile en la cache. Solo se admite un bigfile por juego.
+
+Posteriormente es posible borrar los bigfiles cacheados pulsando START -> "Tools" -> "Delete Cache Tool"
+
+La ventaja de lanzar el juego desde disco duro externo consiste en que el tamaño del bigfile suele ocupar mucho menos del total del juego. (y ello
+requiere un menor tiempo para instalar el juego)
+
+Notas sobre compilacion
+-----------------------
+
+Requiere lo ultimo de PSL1GHT, Tiny3D y PS3Soundlib desde mi git : https://github.com/hermesEOL
+
+Obviamente, es posible adaptar el programa a otros payloads/versiones de firmware y el codigo fuente esta a vuestra disposicion para ello.
+
+Debido a los recientes problemas con github.com y otros sitios de desarrollo, prefiero publicar el codigo fuente y los binarios a la antigua 
+usanza: en formato ZIP/RAR, e invito a otros desarrolladores a que publiquen sus cambios de la misma forma.
