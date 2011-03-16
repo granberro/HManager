@@ -1,4 +1,4 @@
-[submodule "payloadhv4"]
-	path = payloadhv4
-	url = git://github.com/granberro/PayloadV4.git
+[submodule "payload"]
+	path = payload
+	url = git://github.com/granberro/payload.git
 	
