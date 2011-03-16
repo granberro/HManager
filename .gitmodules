@@ -1,3 +1,4 @@
 [submodule "payloadhv4"]
 	path = payloadhv4
-	url = /home/juan/payloadhv4/
+	url = git://github.com/granberro/PayloadV4.git
+	
